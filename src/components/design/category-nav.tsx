@@ -10,6 +10,8 @@ const categories = [
   { name: "Text", href: "/design/text" },
   { name: "Effects", href: "/design/effects" },
   { name: "Backgrounds", href: "/design/backgrounds" },
+  { name: "Page Transitions", href: "/design/page-transitions" },
+  { name: "Content Layout", href: "/design/content-layout" },
 ];
 
 export function CategoryNav() {
