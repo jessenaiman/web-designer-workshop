@@ -2,7 +2,6 @@ import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { AuroraText } from "@/components/magicui/aurora-text";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
-import { TweetCard } from "@/components/magicui/tweet-card";
 import { WarpBackground } from "@/components/magicui/warp-background";
 import { Button } from "@/components/ui/button";
 
@@ -101,17 +100,6 @@ export default function HomePage() {
                     <BentoCard key={idx} {...feature} />
                 ))}
             </BentoGrid>
-        </div>
-      </section>
-
-      <section className="py-20 bg-muted/30">
-        <div className="container mx-auto px-4">
-            <h2 className="text-center text-3xl font-bold tracking-tight mb-8">Loved by Teams</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                 <TweetCard id="1783856060249595904" />
-                 <TweetCard id="1593304942210478080" />
-                 <TweetCard id="1677042510839857154" />
-            </div>
         </div>
       </section>
 

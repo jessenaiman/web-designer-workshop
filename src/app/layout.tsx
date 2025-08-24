@@ -1,3 +1,4 @@
+
 import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
@@ -36,14 +37,14 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <div className="flex h-screen">
-                <Sidebar>
-                    <AppSidebar />
-                </Sidebar>
-                <SidebarRail />
-                <div className="flex flex-1 flex-col">
-                    <AppHeader />
-                    <SidebarInset>{children}</SidebarInset>
-                </div>
+              <Sidebar>
+                <AppSidebar />
+              </Sidebar>
+              <SidebarRail />
+              <div className="flex flex-1 flex-col">
+                <AppHeader />
+                <SidebarInset>{children}</SidebarInset>
+              </div>
             </div>
           </SidebarProvider>
           <Toaster />
