@@ -9,12 +9,12 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-} from "@/components/ui/sidebar"
+} from "@/components/animate-ui/radix/sidebar"
 import { Code, Brush, Bot, BookOpen, LayoutDashboard, Settings, LifeBuoy } from "lucide-react"
 import { Logo } from "@/components/icons/logo"
 
 const menuItems = [
-  { href: "/", icon: LayoutDashboard, label: "Dashboard" },
+  { href: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
   { href: "/design", icon: Brush, label: "Design" },
   { href: "/ai", icon: Bot, label: "AI Tools" },
   { href: "/styleguides", icon: Code, label: "Style Guides" },
@@ -24,8 +24,9 @@ const menuItems = [
 export function AppSidebar() {
   const pathname = usePathname()
   const isActive = (href: string) => {
-    if (href === '/') return pathname === '/'
-    return pathname.startsWith(href)
+    if (href === '/dashboard' && pathname === '/dashboard') return true;
+    if (href !== '/dashboard' && pathname.startsWith(href)) return true;
+    return false
   }
 
   return (

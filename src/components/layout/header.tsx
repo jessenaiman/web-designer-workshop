@@ -1,6 +1,6 @@
 "use client"
 
-import { SidebarTrigger } from "@/components/ui/sidebar"
+import { SidebarTrigger } from "@/components/animate-ui/radix/sidebar";
 import { ThemeToggle } from "@/components/theme-toggle"
 import { usePathname } from 'next/navigation'
 import Link from 'next/link'
@@ -8,11 +8,16 @@ import { Home, ChevronRight } from "lucide-react"
 
 function Breadcrumbs() {
   const pathname = usePathname()
+  
+  if (pathname === '/') {
+    return null;
+  }
+
   const pathSegments = pathname.split('/').filter(Boolean)
 
   return (
     <nav className="hidden md:flex items-center text-sm font-medium text-muted-foreground">
-      <Link href="/" className="hover:text-primary">
+      <Link href="/dashboard" className="hover:text-primary">
         <Home className="h-4 w-4" />
       </Link>
       {pathSegments.map((segment, index) => {

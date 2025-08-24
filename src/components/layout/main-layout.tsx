@@ -1,4 +1,4 @@
-import { SidebarProvider, Sidebar, SidebarInset, SidebarRail } from "@/components/ui/sidebar";
+import { Sidebar, SidebarInset, SidebarProvider, SidebarRail } from "@/components/animate-ui/radix/sidebar";
 import { AppSidebar } from "./sidebar";
 import { AppHeader } from "./header";
 
@@ -7,8 +7,8 @@ export default function MainLayout({ children }: { children: React.ReactNode }) 
     <SidebarProvider>
       <Sidebar>
         <AppSidebar />
-        <SidebarRail />
       </Sidebar>
+      <SidebarRail />
       <SidebarInset className="flex flex-col">
         <AppHeader />
         {children}

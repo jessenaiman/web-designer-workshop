@@ -1,100 +1,138 @@
-import MainLayout from "@/components/layout/main-layout";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import { ArrowRight, Code, Brush, Bot, BookOpen } from "lucide-react";
+import { AuroraText } from "@/components/magicui/aurora-text";
+import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
+import { TweetCard } from "@/components/magicui/tweet-card";
+import { WarpBackground } from "@/components/magicui/warp-background";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-export default function DashboardPage() {
+const features = [
+  {
+    name: "Design-Dev Symphony",
+    description: "Bridge the gap between design and code with interactive component previews.",
+    className: "col-span-3 lg:col-span-1",
+    background: (
+      <img
+        alt="Relational Data"
+        src="https://placehold.co/800x400.png"
+        width="800"
+        height="400"
+        className="absolute -right-20 -top-20 opacity-20"
+        data-ai-hint="abstract design"
+      />
+    ),
+  },
+  {
+    name: "AI-Powered Workflow",
+    description: "Leverage generative AI to customize components, generate assets, and accelerate your workflow.",
+    className: "col-span-3 lg:col-span-2",
+    background: (
+      <img
+        alt="Relational Data"
+        src="https://placehold.co/800x400.png"
+        width="800"
+        height="400"
+        className="absolute -right-20 -top-20 opacity-20"
+        data-ai-hint="abstract ai"
+      />
+    ),
+  },
+  {
+    name: "Library of Wonders",
+    description: "Explore a curated collection of design patterns and interactive components.",
+    className: "col-span-3 lg:col-span-2",
+     background: (
+      <img
+        alt="Relational Data"
+        src="https://placehold.co/800x400.png"
+        width="800"
+        height="400"
+        className="absolute -right-20 -top-20 opacity-20"
+        data-ai-hint="abstract library"
+      />
+    ),
+  },
+  {
+    name: "Shareable & Collaborative",
+    description: "Instantly share any component variation with a unique, state-encoded URL.",
+    className: "col-span-3 lg:col-span-1",
+    background: (
+      <img
+        alt="Relational Data"
+        src="https://placehold.co/800x400.png"
+        width="800"
+        height="400"
+        className="absolute -right-20 -top-20 opacity-20"
+        data-ai-hint="abstract collaboration"
+      />
+    ),
+  },
+];
+
+
+export default function HomePage() {
   return (
-    <MainLayout>
-      <div className="flex-1 space-y-4 p-4 sm:p-8">
-        <div className="flex items-center justify-between space-y-2">
-          <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
+    <>
+      <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-background md:shadow-xl">
+        <div className="z-10 flex flex-col items-center text-center">
+            <AuroraText className="px-4 py-2 text-3xl font-extrabold tracking-tighter text-center md:text-5xl lg:text-7xl">
+                Beyond Rounded Edges
+            </AuroraText>
+            <p className="mt-4 max-w-xl text-lg text-muted-foreground">
+                A collaborative workshop where design meets development. Stop the hand-off headaches and start building in harmony.
+            </p>
+            <div className="mt-6 flex gap-4">
+                <Button asChild size="lg">
+                    <Link href="/dashboard">Enter the Workshop <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                    <Link href="/design">Explore Components</Link>
+                </Button>
+            </div>
         </div>
-        <div className="space-y-4">
-          <Card className="border-primary/20 shadow-sm">
-            <CardHeader>
-              <CardTitle>Welcome to WebCraft Studio!</CardTitle>
-              <CardDescription>Your collaborative workshop for modern web design. Explore, customize, and share design components seamlessly.</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-muted-foreground">
-                This is your central hub for creativity and collaboration. Whether you're a designer, developer, or manager, WebCraft Studio is built to streamline your workflow.
-              </p>
-            </CardContent>
-          </Card>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4">
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Design Library
-                </CardTitle>
-                <Brush className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">Explore</div>
-                <p className="text-xs text-muted-foreground">
-                  Browse interactive design patterns.
-                </p>
-                <Button asChild size="sm" className="mt-4">
-                  <Link href="/design">Go to Design <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  AI Tools
-                </CardTitle>
-                <Bot className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">Create</div>
-                <p className="text-xs text-muted-foreground">
-                  Leverage AI for code and inspiration.
-                </p>
-                <Button asChild size="sm" className="mt-4">
-                  <Link href="/ai">Use AI Tools <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Style Guides
-                </CardTitle>
-                <Code className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">Learn</div>
-                <p className="text-xs text-muted-foreground">
-                  Access framework style guides.
-                </p>
-                <Button asChild size="sm" className="mt-4">
-                  <Link href="/styleguides">View Guides <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-              </CardContent>
-            </Card>
-             <Card>
-              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                <CardTitle className="text-sm font-medium">
-                  Blog
-                </CardTitle>
-                <BookOpen className="h-4 w-4 text-muted-foreground" />
-              </CardHeader>
-              <CardContent>
-                <div className="text-2xl font-bold">Read</div>
-                <p className="text-xs text-muted-foreground">
-                  Articles and news from the team.
-                </p>
-                <Button asChild size="sm" className="mt-4">
-                  <Link href="/blog">Visit Blog <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                </Button>
-              </CardContent>
-            </Card>
-          </div>
-        </div>
+        <WarpBackground />
       </div>
-    </MainLayout>
+
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+            <h2 className="text-center text-3xl font-bold tracking-tight mb-8">A New Way to Collaborate</h2>
+            <BentoGrid className="grid-rows-2">
+                {features.map((feature, idx) => (
+                    <BentoCard key={idx} {...feature} />
+                ))}
+            </BentoGrid>
+        </div>
+      </section>
+
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+            <h2 className="text-center text-3xl font-bold tracking-tight mb-8">Loved by Teams</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                 <TweetCard id="1783856060249595904" />
+                 <TweetCard id="1593304942210478080" />
+                 <TweetCard id="1677042510839857154" />
+            </div>
+        </div>
+      </section>
+
+       <section className="py-20">
+        <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold tracking-tight">Ready to Build Better, Together?</h2>
+            <p className="mt-4 max-w-xl mx-auto text-lg text-muted-foreground">
+                Jump into the workshop and experience a seamless design-to-development workflow.
+            </p>
+            <Button asChild size="lg" className="mt-8">
+                <Link href="/dashboard">Get Started Now <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </Button>
+        </div>
+      </section>
+    </>
   );
 }
