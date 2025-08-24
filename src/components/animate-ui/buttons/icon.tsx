@@ -11,10 +11,10 @@ import {
 import { cn } from '@/lib/utils';
 
 const sizes = {
-  default: 'size-8 [&_svg]:size-5',
-  sm: 'size-6 [&_svg]:size-4',
-  md: 'size-10 [&_svg]:size-6',
-  lg: 'size-12 [&_svg]:size-7',
+  default: 'size-10 [&_svg]:size-5',
+  sm: 'size-8 [&_svg]:size-4',
+  md: 'size-12 [&_svg]:size-6',
+  lg: 'size-14 [&_svg]:size-7',
 };
 
 type IconButtonProps = Omit<HTMLMotionProps<'button'>, 'color'> & {
@@ -41,7 +41,8 @@ function IconButton({
     <motion.button
       data-slot="icon-button"
       className={cn(
-        `group/icon-button cursor-pointer relative inline-flex size-10 shrink-0 rounded-full hover:bg-[var(--icon-button-color)]/10 active:bg-[var(--icon-button-color)]/20 text-[var(--icon-button-color)]`,
+        `group/icon-button cursor-pointer relative inline-flex shrink-0 rounded-full items-center justify-center`,
+        `hover:bg-[var(--icon-button-color)]/10 active:bg-[var(--icon-button-color)]/20 text-[var(--icon-button-color)]`,
         sizes[size],
         className,
       )}
@@ -59,9 +60,10 @@ function IconButton({
         aria-hidden="true"
       >
         <Icon
-          className={
-            active ? 'fill-[var(--icon-button-color)]' : 'fill-transparent'
-          }
+          className={cn(
+            'transition-colors',
+            active ? 'fill-[var(--icon-button-color)]' : 'fill-transparent',
+          )}
         />
       </motion.div>
 

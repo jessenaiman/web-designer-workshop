@@ -18,7 +18,7 @@ export default function DesignLayout({
           </header>
           <div className="flex flex-col md:flex-row">
             <CategoryNav />
-            <main className="flex-1 p-4 sm:p-6">{children}</main>
+            <main className="flex-1 p-4 sm:p-6 pb-24">{children}</main>
           </div>
         </div>
         <DesignControlsBar />
