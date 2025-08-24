@@ -3,9 +3,12 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { ThemeProvider } from '@/components/providers/theme-provider';
 import { Toaster } from "@/components/ui/toaster"
-import { SidebarProvider } from '@/components/ui/sidebar';
+import { 
+  SidebarProvider, 
+  SidebarRail, 
+  SidebarInset 
+} from '@/components/animate-ui/radix/sidebar';
 import { AppSidebar } from '@/components/layout/sidebar';
-import { Sidebar, SidebarRail, SidebarInset } from '@/components/ui/sidebar';
 import { AppHeader } from '@/components/layout/header';
 
 export const metadata: Metadata = {
@@ -37,9 +40,7 @@ export default function RootLayout({
         >
           <SidebarProvider>
             <div className="flex h-screen">
-              <Sidebar>
-                <AppSidebar />
-              </Sidebar>
+              <AppSidebar />
               <SidebarRail />
               <div className="flex flex-1 flex-col">
                 <AppHeader />

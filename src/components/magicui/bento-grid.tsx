@@ -1,4 +1,3 @@
-
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 import { ComponentPropsWithoutRef, ReactNode } from "react";
 
@@ -20,7 +19,7 @@ interface BentoCardProps extends ComponentPropsWithoutRef<"div"> {
   cta: string;
 }
 
-export const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
+const BentoGrid = ({ children, className, ...props }: BentoGridProps) => {
   return (
     <div
       className={cn(
@@ -34,7 +33,7 @@ export const BentoGrid = ({ children, className, ...props }: BentoGridProps) => 
   );
 };
 
-export const BentoCard = ({
+const BentoCard = ({
   name,
   className,
   background,
@@ -106,3 +105,5 @@ export const BentoCard = ({
     <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
   </div>
 );
+
+export { BentoCard, BentoGrid };
