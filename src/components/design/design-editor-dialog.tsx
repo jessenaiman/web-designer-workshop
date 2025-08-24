@@ -87,9 +87,16 @@ export function DesignEditorDialog({ trigger, children, componentName, initialSe
     const propsToString = Object.entries(settings)
       .map(([key, value]) => {
         if (typeof value === 'string') {
+          // Handle special cases for props that should not be strings
+          if (key === 'words' && typeof value === 'string') {
+             return `${key}={${JSON.stringify(value.split(','))}}`;
+          }
           return `${key}="${value}"`;
         }
-        return `${key}={${value}}`;
+        if (typeof value === 'boolean' || typeof value === 'number') {
+           return `${key}={${value}}`;
+        }
+        return `${key}={${JSON.stringify(value)}}`;
       })
       .join(' ');
     
@@ -105,8 +112,11 @@ export function DesignEditorDialog({ trigger, children, componentName, initialSe
   };
 
   const previewComponent = React.isValidElement(children) ? React.cloneElement(children, {
+    ...children.props,
     ...settings,
-    children: settings.buttonText || settings.text || children.props.children
+    children: settings.buttonText || settings.text || children.props.children,
+    // Handle specific prop transformations for preview
+    ...(settings.words && { words: settings.words.split(',') })
   }) : children;
 
   return (

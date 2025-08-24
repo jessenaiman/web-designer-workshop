@@ -12,7 +12,7 @@ export default function ButtonsPage() {
       <PreviewTile
         title="Pulsing Button"
         description="A button with a subtle pulse animation."
-        componentName="PulsingButton"
+        componentName="PulsatingButton"
         initialSettings={{
           buttonText: "Click Me",
           pulseColor: "#8B5CF6",
