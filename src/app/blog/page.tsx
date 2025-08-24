@@ -5,6 +5,18 @@ import { ArrowRight } from "lucide-react";
 
 const posts = [
   {
+    slug: "next-steps-and-revised-plan",
+    title: "Next Steps and Revised Plan",
+    description: "Outlining the future direction for the WebCraft Studio, focusing on AI, interactivity, and collaboration.",
+    date: "2024-07-18",
+  },
+  {
+    slug: "retrospective-initial-scaffold",
+    title: "Project Retrospective: Building the Foundation",
+    description: "A look back at the initial scaffolding phase and the progress made on the WebCraft Studio.",
+    date: "2024-07-18",
+  },
+  {
     slug: "mastering-css-animations",
     title: "Mastering CSS Animations",
     description: "A deep dive into creating smooth and performant animations with pure CSS.",
