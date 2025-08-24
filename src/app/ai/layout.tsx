@@ -1,7 +1,6 @@
 
 "use client";
 
-import MainLayout from "@/components/layout/main-layout";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from 'next/link';
 import { Bot, Component, MessageSquare, ImageIcon, VideoIcon } from "lucide-react";
@@ -37,21 +36,19 @@ export default function AILayout({
   children: React.ReactNode;
 }) {
   return (
-    <MainLayout>
-        <div className="flex-1 space-y-4 p-4 sm:p-8">
-            <div className="flex items-center justify-between space-y-2">
-                <div>
-                    <h1 className="text-2xl font-bold tracking-tight flex items-center gap-2">
-                        <Bot /> AI Tools
-                    </h1>
-                    <p className="text-muted-foreground">Leverage AI to accelerate your design and development workflow.</p>
-                </div>
-            </div>
-            <AINav />
-            <div className="pt-4">
-                {children}
+    <div className="flex-1 space-y-4 p-4 sm:p-8">
+        <div className="flex items-center justify-between space-y-2">
+            <div>
+                <h1 className="text-2xl font-bold tracking-tight flex items-center gap-2">
+                    <Bot /> AI Tools
+                </h1>
+                <p className="text-muted-foreground">Leverage AI to accelerate your design and development workflow.</p>
             </div>
         </div>
-    </MainLayout>
+        <AINav />
+        <div className="pt-4">
+            {children}
+        </div>
+    </div>
   );
 }

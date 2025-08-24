@@ -1,4 +1,4 @@
-import MainLayout from "@/components/layout/main-layout";
+
 import { CategoryNav } from "@/components/design/category-nav";
 import { DesignControlsProvider } from "@/components/design/design-controls-context";
 import { DesignControlsBar } from "@/components/design/design-controls-bar";
@@ -9,7 +9,6 @@ export default function DesignLayout({
   children: React.ReactNode;
 }) {
   return (
-    <MainLayout>
       <DesignControlsProvider>
         <div className="flex flex-col">
           <header className="border-b p-4 sm:px-6">
@@ -23,6 +22,5 @@ export default function DesignLayout({
         </div>
         <DesignControlsBar />
       </DesignControlsProvider>
-    </MainLayout>
   );
 }

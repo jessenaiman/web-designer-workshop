@@ -1,4 +1,3 @@
-import MainLayout from "@/components/layout/main-layout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -6,7 +5,6 @@ import { ArrowRight, Code, Brush, Bot, BookOpen } from "lucide-react";
 
 export default function DashboardPage() {
   return (
-    <MainLayout>
       <div className="flex-1 space-y-4 p-4 sm:p-8">
         <div className="flex items-center justify-between space-y-2">
           <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
@@ -95,6 +93,5 @@ export default function DashboardPage() {
           </div>
         </div>
       </div>
-    </MainLayout>
   );
 }

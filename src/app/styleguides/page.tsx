@@ -1,4 +1,3 @@
-import MainLayout from "@/components/layout/main-layout";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
@@ -29,34 +28,32 @@ const guides = [
 
 export default function StyleguidesPage() {
   return (
-    <MainLayout>
-      <div className="flex-1 space-y-4 p-4 sm:p-8">
-        <div className="flex items-center justify-between space-y-2">
-            <div>
-                <h1 className="text-3xl font-bold tracking-tight">Style Guides</h1>
-                <p className="text-muted-foreground">
-                    Links to official documentation for the technologies used in this workshop.
-                </p>
-            </div>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {guides.map((guide) => (
-            <Card key={guide.name}>
-              <CardHeader>
-                <CardTitle>{guide.name}</CardTitle>
-                <CardDescription>{guide.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <Button asChild variant="outline">
-                  <Link href={guide.link} target="_blank" rel="noopener noreferrer">
-                    Visit Guide <ArrowUpRight className="ml-2 h-4 w-4" />
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
+    <div className="flex-1 space-y-4 p-4 sm:p-8">
+      <div className="flex items-center justify-between space-y-2">
+          <div>
+              <h1 className="text-3xl font-bold tracking-tight">Style Guides</h1>
+              <p className="text-muted-foreground">
+                  Links to official documentation for the technologies used in this workshop.
+              </p>
+          </div>
       </div>
-    </MainLayout>
+      <div className="grid gap-4 md:grid-cols-2">
+        {guides.map((guide) => (
+          <Card key={guide.name}>
+            <CardHeader>
+              <CardTitle>{guide.name}</CardTitle>
+              <CardDescription>{guide.description}</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <Button asChild variant="outline">
+                <Link href={guide.link} target="_blank" rel="noopener noreferrer">
+                  Visit Guide <ArrowUpRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
 }
