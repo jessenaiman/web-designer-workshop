@@ -46,7 +46,7 @@ export default function TextPage() {
             }}
         >
             <div className="h-48 overflow-y-auto rounded-md border p-4">
-                <TextReveal>Scroll down to reveal the magic of this component. The text will appear as you scroll through this container.</TextReveal>
+                <TextReveal text="Scroll down to reveal the magic of this component. The text will appear as you scroll through this container." />
             </div>
         </PreviewTile>
     </div>

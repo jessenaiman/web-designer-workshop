@@ -2,7 +2,7 @@ import { PreviewTile } from "@/components/design/preview-tile";
 import { MagicCard } from "@/components/magicui/magic-card";
 import { BorderBeam } from "@/components/magicui/border-beam";
 import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
-import Meteors from "@/components/magicui/meteors";
+import { Meteors } from "@/components/magicui/meteors";
 
 export default function EffectsPage() {
   return (

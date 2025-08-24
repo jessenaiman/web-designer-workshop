@@ -5,13 +5,6 @@ import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import { TweetCard } from "@/components/magicui/tweet-card";
 import { WarpBackground } from "@/components/magicui/warp-background";
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 
 const features = [
   {
