@@ -16,6 +16,26 @@ export default function ButtonsPage() {
       >
         <Button className="animate-pulse">Click Me</Button>
       </PreviewTile>
+      <PreviewTile
+        title="Shimmer Button"
+        description="A button with a shimmering gradient effect."
+        componentName="ShimmerButton"
+        initialSettings={{
+          buttonText: "Get Started",
+        }}
+      >
+        <Button>Get Started</Button>
+      </PreviewTile>
+       <PreviewTile
+        title="Icon Button"
+        description="A compact button with an icon."
+        componentName="IconButton"
+        initialSettings={{
+          icon: "ArrowRight",
+        }}
+      >
+        <Button size="icon">{"->"}</Button>
+      </PreviewTile>
     </div>
   );
 }
