@@ -15,7 +15,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { useRouter, useSearchParams } from "next/navigation";
-import { Share2, Code, Copy, RefreshCw } from "lucide-react";
+import { Share2, Code, Copy, RefreshCw, Save } from "lucide-react";
+import { CodeModal } from "../ui/CodeModal";
 
 type DesignEditorDialogProps = {
   trigger: React.ReactNode;
@@ -75,15 +76,25 @@ export function DesignEditorDialog({ trigger, children, componentName, initialSe
     });
   };
 
+  const handleSave = () => {
+    toast({
+      title: "Settings Saved",
+      description: "Your customized settings have been saved (mock).",
+    });
+  };
+
   const codeString = useMemo(() => {
-    // This is a simplified representation. A real implementation would be more complex.
-    return `<Button style={{ 
-  '--pulse-color': '${settings.pulseColor}', 
-  animationDuration: '${settings.speed}' 
-}}>
-  ${settings.buttonText}
-</Button>`;
-  }, [settings]);
+    const propsToString = Object.entries(settings)
+      .map(([key, value]) => {
+        if (typeof value === 'string') {
+          return `${key}="${value}"`;
+        }
+        return `${key}={${value}}`;
+      })
+      .join(' ');
+    
+    return `<${componentName} ${propsToString} />`;
+  }, [settings, componentName]);
 
   const handleCopyCode = () => {
     navigator.clipboard.writeText(codeString);
@@ -93,13 +104,10 @@ export function DesignEditorDialog({ trigger, children, componentName, initialSe
     });
   };
 
-  const previewComponent = React.cloneElement(children as React.ReactElement, {
-    style: {
-      backgroundColor: settings.pulseColor,
-      animationDuration: settings.speed,
-    },
-    children: settings.buttonText,
-  });
+  const previewComponent = React.isValidElement(children) ? React.cloneElement(children, {
+    ...settings,
+    children: settings.buttonText || settings.text || children.props.children
+  }) : children;
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
@@ -127,17 +135,19 @@ export function DesignEditorDialog({ trigger, children, componentName, initialSe
             ))}
           </div>
         </div>
-        <DialogFooter className="sm:justify-between flex-col sm:flex-row gap-2">
-          <div className="flex gap-2">
-            <Button variant="outline" onClick={handleReset}><RefreshCw className="mr-2 h-4 w-4" /> Reset</Button>
-          </div>
-          <div className="flex gap-2">
-            <Button variant="secondary" onClick={handleCopyCode}><Copy className="mr-2 h-4 w-4" /> Copy Code</Button>
-            <Button variant="secondary" onClick={handleShare}><Share2 className="mr-2 h-4 w-4" /> Share</Button>
-            <DialogClose asChild>
-              <Button>Done</Button>
-            </DialogClose>
-          </div>
+        <DialogFooter className="sm:justify-between flex-col sm:flex-row gap-2 mt-4">
+           <div className="flex gap-2">
+                <Button variant="outline" onClick={handleReset}><RefreshCw className="mr-2 h-4 w-4" /> Reset</Button>
+                <Button variant="secondary" onClick={handleSave}><Save className="mr-2 h-4 w-4" /> Save</Button>
+            </div>
+            <div className="flex gap-2">
+                <CodeModal title={componentName} code={codeString} language="jsx" triggerText="View Code" />
+                <Button variant="secondary" onClick={handleCopyCode}><Copy className="mr-2 h-4 w-4" /> Copy Code</Button>
+                <Button variant="secondary" onClick={handleShare}><Share2 className="mr-2 h-4 w-4" /> Share</Button>
+                <DialogClose asChild>
+                    <Button>Done</Button>
+                </DialogClose>
+            </div>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -1,5 +1,10 @@
 import { PreviewTile } from "@/components/design/preview-tile";
 import { Button } from "@/components/ui/button";
+import { PulsatingButton } from "@/components/magicui/pulsating-button";
+import { ShimmerButton } from "@/components/magicui/shimmer-button";
+import { ArrowRight } from "lucide-react";
+import { ShinyButton } from "@/components/magicui/shiny-button";
+import { InteractiveHoverButton } from "@/components/magicui/interactive-hover-button";
 
 export default function ButtonsPage() {
   return (
@@ -14,7 +19,7 @@ export default function ButtonsPage() {
           speed: "2s",
         }}
       >
-        <Button className="animate-pulse">Click Me</Button>
+        <PulsatingButton>Click Me</PulsatingButton>
       </PreviewTile>
       <PreviewTile
         title="Shimmer Button"
@@ -24,7 +29,27 @@ export default function ButtonsPage() {
           buttonText: "Get Started",
         }}
       >
-        <Button>Get Started</Button>
+        <ShimmerButton>Get Started</ShimmerButton>
+      </PreviewTile>
+       <PreviewTile
+        title="Shiny Button"
+        description="A button with a shiny, reflective effect."
+        componentName="ShinyButton"
+        initialSettings={{
+          buttonText: "Submit",
+        }}
+      >
+        <ShinyButton>Submit</ShinyButton>
+      </PreviewTile>
+      <PreviewTile
+        title="Interactive Hover"
+        description="A button that animates on hover to reveal more."
+        componentName="InteractiveHoverButton"
+        initialSettings={{
+          buttonText: "Learn More",
+        }}
+      >
+        <InteractiveHoverButton>Learn More</InteractiveHoverButton>
       </PreviewTile>
        <PreviewTile
         title="Icon Button"
@@ -34,7 +59,9 @@ export default function ButtonsPage() {
           icon: "ArrowRight",
         }}
       >
-        <Button size="icon">{"->"}</Button>
+        <Button size="icon" aria-label="Next">
+            <ArrowRight />
+        </Button>
       </PreviewTile>
     </div>
   );

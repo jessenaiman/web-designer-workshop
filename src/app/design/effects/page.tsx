@@ -1,22 +1,54 @@
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Wand2 } from "lucide-react";
+import { PreviewTile } from "@/components/design/preview-tile";
+import { MagicCard } from "@/components/magicui/magic-card";
+import { BorderBeam } from "@/components/magicui/border-beam";
+import { NeonGradientCard } from "@/components/magicui/neon-gradient-card";
+import Meteors from "@/components/magicui/meteors";
 
 export default function EffectsPage() {
   return (
-    <div className="space-y-4">
-      <Card className="flex flex-col items-center justify-center p-8 text-center">
-        <CardHeader>
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-            <Wand2 className="h-8 w-8" />
-          </div>
-          <CardTitle>Visual Effects</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-muted-foreground">
-            This section is under construction. Check back soon for cool visual effects.
-          </p>
-        </CardContent>
-      </Card>
+    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <PreviewTile
+            title="Magic Card"
+            description="A card with a glowing, interactive border."
+            componentName="MagicCard"
+            initialSettings={{}}
+        >
+            <MagicCard className="w-full h-48 flex items-center justify-center">
+                <p className="text-center text-muted-foreground">Hover over me</p>
+            </MagicCard>
+        </PreviewTile>
+        <PreviewTile
+            title="Border Beam"
+            description="An animated beam that travels around a container's border."
+            componentName="BorderBeam"
+            initialSettings={{}}
+        >
+            <div className="w-full h-48 rounded-md border relative flex items-center justify-center">
+                <p className="text-center text-muted-foreground">Look at my border</p>
+                <BorderBeam />
+            </div>
+        </PreviewTile>
+        <PreviewTile
+            title="Neon Gradient Card"
+            description="A card with a vibrant, animated neon border."
+            componentName="NeonGradientCard"
+            initialSettings={{}}
+        >
+             <NeonGradientCard className="w-full h-48 flex items-center justify-center">
+                <p className="text-center text-muted-foreground">I've got a neon glow</p>
+            </NeonGradientCard>
+        </PreviewTile>
+        <PreviewTile
+            title="Meteors"
+            description="An effect that adds animated meteors to the background."
+            componentName="Meteors"
+            initialSettings={{}}
+        >
+            <div className="w-full h-48 rounded-md border relative flex items-center justify-center overflow-hidden">
+                <Meteors number={20} />
+                <p className="text-center text-white z-10">Look at the sky</p>
+            </div>
+        </PreviewTile>
     </div>
   );
 }

@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as AccordionPrimitive from "@radix-ui/react-accordion";
@@ -387,23 +386,4 @@ const CollapseButton = forwardRef<
 
 CollapseButton.displayName = "CollapseButton";
 
-const FileTree = forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => {
-  return (
-    <div
-      ref={ref}
-      className={cn(
-        "h-full w-full rounded-md bg-background/95 p-2 text-sm",
-        className,
-      )}
-      {...props}
-    />
-  );
-});
-
-FileTree.displayName = "FileTree";
-
-
-export { CollapseButton, File, Folder, Tree, FileTree, type TreeViewElement };
+export { CollapseButton, File, Folder, Tree, type TreeViewElement };

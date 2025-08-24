@@ -99,7 +99,7 @@ export function AnimatedCircularProgressBar({
       </svg>
       <span
         data-current-value={currentPercent}
-        className="ease-linear animate-in fade-in duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit"
+        className="duration-[var(--transition-length)] delay-[var(--delay)] absolute inset-0 m-auto size-fit ease-linear animate-in fade-in"
       >
         {currentPercent}
       </span>
