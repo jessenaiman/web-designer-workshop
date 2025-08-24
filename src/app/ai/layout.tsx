@@ -4,7 +4,7 @@
 import MainLayout from "@/components/layout/main-layout";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from 'next/link';
-import { Bot, Component, MessageSquare, ImageIcon } from "lucide-react";
+import { Bot, Component, MessageSquare, ImageIcon, VideoIcon } from "lucide-react";
 import { usePathname } from "next/navigation";
 
 function AINav() {
@@ -24,7 +24,7 @@ function AINav() {
                     <Link href="/ai/image-creator"><ImageIcon className="mr-2 h-4 w-4" /> Image Creator</Link>
                 </TabsTrigger>
                 <TabsTrigger value="video-creator" asChild>
-                    <Link href="/ai/video-creator">Video Creator</Link>
+                    <Link href="/ai/video-creator"><VideoIcon className="mr-2 h-4 w-4" /> Video Creator</Link>
                 </TabsTrigger>
             </TabsList>
         </Tabs>

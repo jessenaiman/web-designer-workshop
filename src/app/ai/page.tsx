@@ -1,7 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight, Component, MessageSquare, ImageIcon } from "lucide-react";
+import { ArrowRight, Component, MessageSquare, ImageIcon, VideoIcon } from "lucide-react";
 
 export default function AIPage() {
   return (
@@ -39,6 +39,18 @@ export default function AIPage() {
             <CardContent>
                 <Button asChild>
                     <Link href="/ai/image-creator">Create Images <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                </Button>
+            </CardContent>
+        </Card>
+        <Card>
+            <CardHeader>
+                <VideoIcon className="h-8 w-8 text-primary mb-2" />
+                <CardTitle>AI Video Creator</CardTitle>
+                <CardDescription>Generate short video clips from text prompts.</CardDescription>
+            </CardHeader>
+            <CardContent>
+                <Button asChild>
+                    <Link href="/ai/video-creator">Create Videos <ArrowRight className="ml-2 h-4 w-4" /></Link>
                 </Button>
             </CardContent>
         </Card>

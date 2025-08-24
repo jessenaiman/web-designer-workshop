@@ -18,6 +18,17 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  serverActions: {
+    bodySizeLimit: '4mb',
+    serverActions: true,
+    allowedOrigins: ["*.apphosting.dev", "*.firebaseapp.com", "*.web.app"]
+  },
+  experimental: {
+    serverActions: {
+      bodySizeLimit: '4mb',
+    },
+    serverActionsTimeout: 120000,
+  }
 };
 
 export default nextConfig;
