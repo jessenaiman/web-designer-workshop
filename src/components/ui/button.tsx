@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
+import { cva } from "class-variance-authority"
+import type { VariantProps } from "class-variance-authority/types"
 
 import { cn } from "@/lib/utils"
 
@@ -33,8 +34,12 @@ const buttonVariants = cva(
   }
 )
 
+// Export the variant and size types for external use
+export type ButtonVariant = NonNullable<VariantProps<typeof buttonVariants>['variant']>
+export type ButtonSize = NonNullable<VariantProps<typeof buttonVariants>['size']>
+
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+  extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'size'>,
     VariantProps<typeof buttonVariants> {
   asChild?: boolean
 }

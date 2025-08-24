@@ -13,7 +13,7 @@ function AINav() {
 
     return (
         <Tabs defaultValue={defaultValue} className="w-full">
-            <TabsList className="grid w-full grid-cols-3">
+            <TabsList className="grid w-full grid-cols-4">
                 <TabsTrigger value="component-customizer" asChild>
                     <Link href="/ai/component-customizer"><Component className="mr-2 h-4 w-4" /> Component Customizer</Link>
                 </TabsTrigger>
@@ -22,6 +22,9 @@ function AINav() {
                 </TabsTrigger>
                 <TabsTrigger value="image-creator" asChild>
                     <Link href="/ai/image-creator"><ImageIcon className="mr-2 h-4 w-4" /> Image Creator</Link>
+                </TabsTrigger>
+                <TabsTrigger value="video-creator" asChild>
+                    <Link href="/ai/video-creator">Video Creator</Link>
                 </TabsTrigger>
             </TabsList>
         </Tabs>
