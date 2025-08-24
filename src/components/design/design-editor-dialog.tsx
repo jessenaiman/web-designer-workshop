@@ -60,6 +60,7 @@ export function DesignEditorDialog({ trigger, children, componentName, initialSe
     const dataToEncode = { componentName, settings };
     const encodedSettings = btoa(JSON.stringify(dataToEncode));
     const url = new URL(window.location.href);
+    url.search = ""; // Clear existing query params
     url.searchParams.set("settings", encodedSettings);
     navigator.clipboard.writeText(url.toString());
     toast({
