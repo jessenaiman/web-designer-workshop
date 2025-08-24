@@ -1,18 +1,27 @@
+
+"use client";
+
 import MainLayout from "@/components/layout/main-layout";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from 'next/link';
-import { Bot, Component, MessageSquare } from "lucide-react";
+import { Bot, Component, MessageSquare, ImageIcon } from "lucide-react";
+import { usePathname } from "next/navigation";
 
-// This component is a placeholder for a more robust tab navigation that would likely use the URL path.
 function AINav() {
+    const pathname = usePathname();
+    const defaultValue = pathname.split('/').pop() || 'component-customizer';
+
     return (
-        <Tabs defaultValue="component-customizer" className="w-full">
-            <TabsList className="grid w-full grid-cols-2">
+        <Tabs defaultValue={defaultValue} className="w-full">
+            <TabsList className="grid w-full grid-cols-3">
                 <TabsTrigger value="component-customizer" asChild>
                     <Link href="/ai/component-customizer"><Component className="mr-2 h-4 w-4" /> Component Customizer</Link>
                 </TabsTrigger>
                 <TabsTrigger value="chat" asChild>
                     <Link href="/ai/chat"><MessageSquare className="mr-2 h-4 w-4" /> AI Chat</Link>
+                </TabsTrigger>
+                <TabsTrigger value="image-creator" asChild>
+                    <Link href="/ai/image-creator"><ImageIcon className="mr-2 h-4 w-4" /> Image Creator</Link>
                 </TabsTrigger>
             </TabsList>
         </Tabs>
@@ -35,7 +44,7 @@ export default function AILayout({
                     <p className="text-muted-foreground">Leverage AI to accelerate your design and development workflow.</p>
                 </div>
             </div>
-            {/* <AINav /> */}
+            <AINav />
             <div className="pt-4">
                 {children}
             </div>
