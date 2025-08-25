@@ -34,19 +34,28 @@ export default function ContentLayoutPage() {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-1 lg:grid-cols-1">
-      <PreviewTile
-        title="Bento Grid"
-        description="A modern, flexible grid layout for showcasing features."
-        componentName="BentoGrid"
-        initialSettings={{}}
-      >
-        <BentoGrid className="lg:grid-rows-2">
+    <div className="container mx-auto max-w-7xl space-y-8 p-4">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight">Content Layout</h1>
+        <p className="text-muted-foreground">
+          Flexible grid layouts and content organization components
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-1 gap-6">
+        <PreviewTile
+          title="Bento Grid"
+          description="A modern, flexible grid layout for showcasing features."
+          componentName="BentoGrid"
+          initialSettings={{}}
+        >
+          <BentoGrid className="lg:grid-rows-2">
             {features.map((feature) => (
-                <BentoCard key={feature.name} {...feature} />
+              <BentoCard key={feature.name} {...feature} />
             ))}
-        </BentoGrid>
-      </PreviewTile>
+          </BentoGrid>
+        </PreviewTile>
+      </div>
     </div>
   );
 }

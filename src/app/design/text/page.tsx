@@ -6,49 +6,83 @@ import { TextReveal } from "@/components/magicui/text-reveal";
 
 export default function TextPage() {
   return (
-    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <div className="container mx-auto max-w-7xl space-y-8 p-4">
+      <div className="space-y-2">
+        <h1 className="text-3xl font-bold tracking-tight">Text Components</h1>
+        <p className="text-muted-foreground">
+          Explore our collection of animated text components
+        </p>
+      </div>
+      
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         <PreviewTile
-            title="Animated Gradient"
-            description="Text with an animated gradient background."
-            componentName="AnimatedGradientText"
-            initialSettings={{
-                text: "Hello World",
-            }}
+          title="Animated Gradient"
+          description="Text with an animated gradient background."
+          componentName="AnimatedGradientText"
+          initialSettings={{
+            text: "Hello World",
+          }}
+          quickControls={[
+            {
+              key: 'text',
+              label: 'Text Content',
+              type: 'text'
+            }
+          ]}
         >
-            <AnimatedGradientText>Hello World</AnimatedGradientText>
+          <AnimatedGradientText>Hello World</AnimatedGradientText>
         </PreviewTile>
+        
         <PreviewTile
-            title="Flip Text"
-            description="Text that flips in character by character."
-            componentName="FlipText"
-            initialSettings={{
-                text: "Flipping Great",
-            }}
+          title="Flip Text"
+          description="Text that flips in character by character."
+          componentName="FlipText"
+          initialSettings={{
+            text: "Flipping Great",
+          }}
         >
-            <FlipText>Flipping Great</FlipText>
+          <FlipText>Flipping Great</FlipText>
         </PreviewTile>
+        
         <PreviewTile
-            title="Word Rotate"
-            description="Rotates through a series of words."
-            componentName="WordRotate"
-            initialSettings={{
-                words: "Innovate,Create,Design",
-            }}
+          title="Word Rotate"
+          description="Rotates through a series of words."
+          componentName="WordRotate"
+          initialSettings={{
+            words: "Innovate,Create,Design",
+            duration: 2500,
+          }}
+          quickControls={[
+            {
+              key: 'words',
+              label: 'Words (comma separated)',
+              type: 'text'
+            },
+            {
+              key: 'duration',
+              label: 'Duration (ms)',
+              type: 'number',
+              min: 1000,
+              max: 5000
+            }
+          ]}
         >
-            <WordRotate words={["Innovate", "Create", "Design"]} />
+          <WordRotate words={["Innovate", "Create", "Design"]} />
         </PreviewTile>
+        
         <PreviewTile
-            title="Text Reveal"
-            description="Text that reveals itself on scroll."
-            componentName="TextReveal"
-            initialSettings={{
-                text: "Scroll down to reveal the magic of this component.",
-            }}
+          title="Text Reveal"
+          description="Text that reveals itself on scroll."
+          componentName="TextReveal"
+          initialSettings={{
+            text: "Scroll down to reveal the magic of this component.",
+          }}
         >
-            <div className="h-48 overflow-y-auto rounded-md border p-4">
-                <TextReveal text="Scroll down to reveal the magic of this component. The text will appear as you scroll through this container." />
-            </div>
+          <div className="h-48 overflow-y-auto rounded-md border p-4">
+            <TextReveal>Scroll down to reveal the magic of this component. The text will appear as you scroll through this container.</TextReveal>
+          </div>
         </PreviewTile>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,35 @@
+{
+  "mcpServers": {
+    "context7": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "env": {
+        "DEFAULT_MINIMUM_TOKENS": ""
+      }
+    },
+    "magicui": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@magicuidesign/mcp@latest"
+      ],
+      "alwaysAllow": [
+        "getUIComponents"
+      ]
+    },
+    "animate-ui": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "shadcn@canary",
+        "registry:mcp"
+      ],
+      "env": {
+        "REGISTRY_URL": "https://animate-ui.com/r/registry.json"
+      }
+    }
+  }
+}

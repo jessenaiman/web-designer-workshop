@@ -38,25 +38,24 @@ const posts = [
 
 export default function BlogPage() {
   return (
-    <div className="flex-1 space-y-4 p-4 sm:p-8">
-      <div className="flex items-center justify-between space-y-2">
-          <div>
-              <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
-              <p className="text-muted-foreground">
-                  Articles and tutorials on web design, development, and collaboration.
-              </p>
-          </div>
+    <div className="space-y-6">
+      <div className="space-y-2">
+          <h1 className="text-3xl font-bold tracking-tight">Blog</h1>
+          <p className="text-muted-foreground">
+              Articles and tutorials on web design, development, and collaboration.
+          </p>
       </div>
-      <div className="space-y-4">
+      
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {posts.map((post) => (
-          <Card key={post.slug}>
+          <Card key={post.slug} className="transition-colors hover:bg-accent/50">
             <CardHeader>
-              <CardTitle>{post.title}</CardTitle>
+              <CardTitle className="line-clamp-2">{post.title}</CardTitle>
               <CardDescription>{post.date}</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-muted-foreground mb-4">{post.description}</p>
-              <Button asChild variant="secondary">
+              <p className="text-muted-foreground mb-4 line-clamp-3">{post.description}</p>
+              <Button asChild variant="secondary" className="w-full">
                 <Link href={`/blog/${post.slug}`}>
                   Read More <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>

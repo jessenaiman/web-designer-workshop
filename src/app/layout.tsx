@@ -39,12 +39,16 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SidebarProvider>
-            <div className="flex h-screen">
+            <div className="flex h-screen overflow-hidden">
               <AppSidebar />
               <SidebarRail />
-              <div className="flex flex-1 flex-col">
+              <div className="flex flex-1 flex-col min-w-0">
                 <AppHeader />
-                <SidebarInset>{children}</SidebarInset>
+                <SidebarInset className="flex-1 overflow-auto">
+                  <main className="container mx-auto px-4 py-6 max-w-7xl">
+                    {children}
+                  </main>
+                </SidebarInset>
               </div>
             </div>
           </SidebarProvider>
