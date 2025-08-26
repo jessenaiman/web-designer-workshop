@@ -17,17 +17,6 @@ const nextConfig: NextConfig = {
         pathname: '/**',
       },
     ],
-  },
-  serverActions: {
-    bodySizeLimit: '4mb',
-    serverActions: true,
-    allowedOrigins: ["*.apphosting.dev", "*.firebaseapp.com", "*.web.app"]
-  },
-  experimental: {
-    serverActions: {
-      bodySizeLimit: '4mb',
-    },
-    serverActionsTimeout: 120000,
   }
 };
 

@@ -1,0 +1,179 @@
+---
+title: 'Project Plan: Web Developer Workshop'
+date: '2024-07-18'
+description: 'A look back at the initial scaffolding phase and the progress made on the WebCraft Studio.'
+---
+# Enhanced Web Design Workshop Project Plan
+
+## Project Vision and Goal
+
+### Core Purpose
+This project is a communication and collaboration tool designed to reduce friction between managers, designers, and developers. The website acts like a physical workshop, providing interactive previews, customizations, and tools for web design techniques.
+
+### Key Success Criteria
+- Users can quickly review, customize, and share design techniques.
+- One representative page per category (e.g., Animations, Text, Backgrounds, Buttons) using the preview-tile + dialog-editor pattern.
+- Scalable structure for adding more content without disrupting core functionality.
+- No authentication, persistence, backends, CMS, or exhaustive libraries in v1.
+
+### Collaboration Feature
+To support collaboration:
+- Generate a unique, shareable URL for any customized component.
+- Encode the component's state (e.g., settings, text) into URL query parameters.
+- When opened, the link loads the component with exact customizations applied.
+- Implementation: Use URLSearchParams for encoding/decoding state. Integrate into the dialog editor's "Share" button (add this button alongside save, view code, copy, reset, close).
+
+## Development Approach
+
+### Overall Process
+Build incrementally using a multi-stage, sequential approach. Decompose tasks into small, verifiable sub-tasks. Implement one at a time, verify alignment, and seek confirmation before proceeding. This ensures the scaffold (structure, layout, functionality) is complete before adding content.
+
+At each major stage start, restate connection to the vision: "This stage connects to the project vision by [brief explanation], reducing friction in [specific workflow aspect]."
+
+### Task Decomposition Guidelines
+- Break goals into sub-tasks with clear objectives, dependencies, and verification criteria.
+- Adhere to conventions: Absolute imports (`@/components/...`), "use client" for interactive components, Tailwind for styling, shadcn for themes, shared contexts for state.
+- Use clean App Router structure under `src/app/...` with nested layouts.
+- Client-side only; no server actions in v1.
+- After each sub-task: Summarize implementation, provide code snippets, state fulfillment, and ask: "Does this meet requirements? Verify before proceeding."
+
+### Phase 1: MVP Goals and Decomposition
+Focus on scaffolding the general structure, layout, and core functionality. Include every detail for sequential steps. Only add representative content after scaffold review.
+
+#### Goal 1: Core Layout Setup
+Connects to vision by establishing a consistent navigation and workspace, enabling quick access for all team roles to reduce misalignment.
+
+Sub-tasks:
+1.1: Implement Root Layout (`src/app/layout.tsx`).
+   - Include HTML/body with lang="en".
+   - Add ThemeProvider for dark/light mode (use next-themes).
+   - Set global metadata: title="Web Design Workshop", description="Collaborative design tool", favicon.
+   - Styling: Base font (Inter), background/text colors via Tailwind.
+   - Verification: Page loads with theme toggle functional, no errors.
+
+1.2: Implement Main Application Layout (`src/app/layout.tsx`).
+   - Compose Sidebar, Header, and flexible Main Content Area.
+   - Accessibility: ARIA roles (nav for sidebar, header, main).
+   - Responsive: Sidebar expanded on lg+, collapsed on md, mobile menu on sm-.
+   - Verification: Layout renders correctly across breakpoints; skip links work.
+
+1.3: Implement Sidebar (`src/components/layout/sidebar.tsx`).
+   - States: Expanded (text+icons), Collapsed (icons), Mobile (hidden).
+   - Features: Toggle button, logo top, nav links (Dashboard, Design, Style Guides, Templates, Settings), active indication, footer.
+   - Navigation: Dashboard (/), Design (/design), Style Guides (/styleguides), Templates (/templates), Settings (/settings).
+   - Accessibility: Keyboard nav, ARIA.
+   - Use icons from lucide-react.
+   - Verification: Toggle works, links navigate, accessible via keyboard.
+
+1.4: Implement Mobile Menu (`src/components/layout/mobile-menu.tsx`).
+   - Trigger: Hamburger in header.
+   - Behavior: Drawer from left, touch-optimized.
+   - Content: Mirror sidebar nav.
+   - Accessibility: Focus trap, ARIA.
+   - Verification: Opens/closes on mobile, nav works.
+
+1.5: Implement Header (`src/components/layout/header.tsx`).
+   - Features: Mobile menu button, page title/breadcrumbs, user menu (placeholder: profile, settings, logout), theme toggle.
+   - Styling: Fixed height, border-bottom.
+   - Verification: Controls functional, responsive.
+
+After completing Goal 1 sub-tasks sequentially, review full layout before proceeding.
+
+#### Goal 2: Design Section Scaffold
+Connects to vision by creating a workbench for interactive design review, allowing teams to experiment and share without code handoffs.
+
+Sub-tasks:
+2.1: Set up Design Layout (`src/app/design/layout.tsx`).
+   - Mount DesignControlsContext Provider.
+   - Include floating DesignControlsBar.
+   - Wrap children in grid container for previews.
+   - Verification: Layout renders with bar, context available.
+
+2.2: Implement DesignControlsBar (`src/components/design/design-controls-bar.tsx`).
+   - Floating bottom bar.
+   - Controls: Play, Stop, Reset (global), Text input (applies to all previews).
+   - Use DesignControlsContext for state.
+   - Verification: Controls update global state.
+
+2.3: Implement DesignControlsContext (`src/components/design/design-controls-context.tsx`).
+   - Provider with global state: { playing: boolean, text: string, ... }.
+   - Hooks: useDesignControls() for read/update.
+   - Verification: State persists across components.
+
+2.4: Implement ComponentControlsContext (`src/components/design/component-controls-context.tsx`).
+   - Per-component overrides: Similar to global but instance-specific.
+   - Effective settings: Merge global + overrides.
+   - Hooks: useComponentControls().
+   - Verification: Merging logic works in tests.
+
+2.5: Implement PreviewTile (`src/components/design/preview-tile.tsx`).
+   - Minimal card: Preview area, title, open editor button.
+   - On click: Open dialog with editor.
+   - Use effective settings from contexts.
+   - Verification: Renders preview, opens dialog.
+
+2.6: Implement Dialog Editor Pattern (using `src/components/design/design-controls-customizable-card.tsx`).
+   - Dialog: Radix Dialog, lazy mount.
+   - Body: Large preview + controls panel.
+   - Buttons: Save (local state), View Code (modal with code), Copy (clipboard), Reset (clear overrides), Close, Share (generate URL with params).
+   - Share: Encode state to ?settings=base64(json).
+   - Decode on load via useEffect.
+   - Verification: Dialog opens, controls update preview, share URL loads state.
+
+2.7: Set up Category Layouts (e.g., `src/app/design/buttons/layout.tsx`).
+   - Tab header for sub-pages (e.g., Overview, Animate CSS, Tailwind, MagicUI).
+   - Mount in nested routes.
+   - Verification: Tabs navigate between sub-pages.
+
+After Goal 2, add placeholder pages for categories (Buttons, Text, Effects, Backgrounds, Page Transitions, Content Layout) with empty grids. Review scaffold before adding representative content.
+
+#### Goal 3: AI Integration Scaffold
+Connects to vision by providing AI-assisted customization and answers, streamlining ideation and reducing back-and-forth.
+
+Sub-tasks:
+3.1: Set up AI Layout (`src/app/ai/layout.tsx`).
+   - Simple layout with nav to sub-sections.
+   - Verification: Renders children.
+
+3.2: Implement Component Customizer (`src/app/ai/component-customizer/page.tsx`).
+   - Input: Text prompt.
+   - Features: Refine prompt button, preview, save/view code/copy.
+   - Placeholder: Mock AI response generating a PreviewTile.
+   - Verification: UI functional, mock flow works.
+
+3.3: Implement Chat (`src/app/ai/chat/page.tsx`).
+   - Simple chat interface.
+   - Placeholder: Mock responses based on workshop content.
+   - Verification: Messages send/receive.
+
+3.4: Implement Image Creator (`src/app/ai/image-creator/page.tsx`).
+   - Prompt input, refine, aspect ratios, generate button.
+   - Placeholder: Mock image output.
+   - Verification: UI options update preview.
+
+Review AI scaffold; integrate real APIs later.
+
+#### Goal 4: Additional Sections Scaffold
+Connects to vision by providing references and templates for consistent development.
+
+Sub-tasks:
+4.1: Blog (`src/app/blog/[slug]/page.tsx`).
+   - Dynamic route, placeholder content.
+   - Verification: Renders slug-based page.
+
+4.2: Styleguides (`src/app/styleguides/nextjs/page.tsx`, etc.).
+   - Pages for Next.js, Radix UI, Tailwind with docs links and examples.
+   - Verification: Pages load.
+
+#### Goal 5: Final Polish and Review
+- Add representative content: One page per category with 1-2 PreviewTiles.
+- Test shareable URLs end-to-end.
+- Ensure no new features; focus on scaffold completion.
+- Full review: "First pass complete. Review work before adding content." 
+
+## Components Directory
+- Maintain structure as in original plan.
+- Add editors as needed during content phase.
+
+## Conventions
+- Absolute imports, client components, Tailwind, etc.
